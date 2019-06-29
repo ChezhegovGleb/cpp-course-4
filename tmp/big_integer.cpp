@@ -195,9 +195,12 @@ big_integer &big_integer::operator/=(big_integer const &rhs) {
     big_integer saverhs = rhs;
     saverhs.sign = 1;
     sign = 1;
-    int64_t uJ, vJ, i, buf3;
+    int64_t uJ, vJ, i, buf3, cnt = 1;
     uint64_t buf1, buf2, buf, scale, ansGuess, r, borrow, carry;
-    scale = BASE / (rhs.digits[n - 1] + 1);
+    if (rhs.digits[n - 1] + 1 == 0) {
+        ++cnt;
+    }
+    scale = BASE / (rhs.digits[n - 1] + cnt);
     if (scale > 1) {
         *this *= (big_integer) scale;
         saverhs *= (big_integer) scale;

@@ -4,8 +4,15 @@
 #include <vector>
 #include <utility>
 #include <gtest/gtest.h>
+#include "big_integer.h"
 
-#include "big_integer.h"/home/glebanya99/CLionProjects/big_integer_optimized/big_integer_testing.cpp
+TEST(correctness, div_long_MY) {
+    big_integer a("18446744073709551615");
+    big_integer b("18446744073709551615");
+    big_integer c("1");
+
+    EXPECT_EQ(a / b, c);
+}
 
 TEST(correctness, two_plus_two)
 {
